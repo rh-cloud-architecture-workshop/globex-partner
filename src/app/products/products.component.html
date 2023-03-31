@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header" style="padding-bottom: 40px;padding-top: 40px;">
+      <div class="col">
+        <span class="card-title h1">Globex Partner Product Catalog</span>
+          <span class="col float-end" *ngIf="!this.isUserAuthenticated"><button (click)="logout()"
+          class="btn btn-warning">Logout</button></span>
+        </div>
+    </div>
+    <div class="card-body">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/products">
+                  <span>Showing {{products.numberOfElements}} of {{products.totalElements}} products &nbsp;&nbsp;</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <ul class="nav navbar-nav navbar-utility">
+            <li class="nav-item" routerLinkActive="active">
+              <ngb-pagination (pageChange)="loadPage($event)" [collectionSize]="products.totalElements"
+                [pageSize]="paginationLimit" [maxSize]="(products.totalPages)" aria-label="Default pagination">
+              </ngb-pagination>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+    <div class="col-lg-4 d-flex align-items-stretch" *ngFor="let product of products.products">
+      <div class="card" style="margin-top: 10px;">
+
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">
+            {{product.desc}}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{product.price | currency}}</small>
+          <small class="float-end" *ngIf="product.quantity > 0">
+            <label class="label label-{{product.quantity < 15 ? 'warning' : 'primary'}}">
+              {{product.quantity}} left!
+            </label>
+          </small>
+          <small class="text-muted float-end" *ngIf="product.quantity <= 0">
+            Inventory unavailable
+          </small>
+        </div>
+      </div>
+    </div>
+
+</div>
+

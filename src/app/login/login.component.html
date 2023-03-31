@@ -1,0 +1,59 @@
+
+<div class="container-fluid" >
+  <section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col">
+
+        <h1>Globex Partner Catalogue Portal</h1>
+        <hr>
+        <div>
+          <span>
+            To view the <b>Globex Partner Product Catalogue</b> you must have created an Application by signing up for an Application Plan throught the Globex Developers' Portal. <br><br>
+            Once you signup, you can access the <i>Client Id</i> and <i>Client Secret</i> which will need to be injected into this application so that your calls can be authenticated to access the protected endppoints
+          </span>
+        </div>
+
+        <br><br>
+        <div class="container" *ngIf="this.user.loggedIn">
+          <button (click)="this.router.navigateByUrl('/products')" type="button" class="btn btn-warning btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">View Products Catalog</button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button (click)="logout()" type="button" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Logout</button>
+
+        </div>
+        <div class="container" *ngIf="this.user && !this.user.loggedIn">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="email" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" [value]="userEmail" style="font-size: 14px;"/>
+            <label class="form-label" for="form3Example3">Email address</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Enter password" style="font-size: 14px;"/>
+            <label class="form-label" for="form3Example4">Password</label>
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="button" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="authenticateUser()">Login to view Products Catalog</button>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+</div>
