@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "globex-partner": {
+    "globex-partner-web": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/globex-partner/browser",
+            "outputPath": "dist/globex-partner-web/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -36,8 +36,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "globex-partner:build:production"
+              "browserTarget": "globex-partner-web:build:production"
             },
             "development": {
-              "browserTarget": "globex-partner:build:development"
+              "browserTarget": "globex-partner-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "globex-partner:build"
+            "browserTarget": "globex-partner-web:build"
           }
         },
         "test": {
@@ -97,7 +97,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/globex-partner/server",
+            "outputPath": "dist/globex-partner-web/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -118,12 +118,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "globex-partner:build:development",
-              "serverTarget": "globex-partner:server:development"
+              "browserTarget": "globex-partner-web:build:development",
+              "serverTarget": "globex-partner-web:server:development"
             },
             "production": {
-              "browserTarget": "globex-partner:build:production",
-              "serverTarget": "globex-partner:server:production"
+              "browserTarget": "globex-partner-web:build:production",
+              "serverTarget": "globex-partner-web:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -137,12 +137,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "globex-partner:build:production",
-              "serverTarget": "globex-partner:server:production"
+              "browserTarget": "globex-partner-web:build:production",
+              "serverTarget": "globex-partner-web:server:production"
             },
             "development": {
-              "browserTarget": "globex-partner:build:development",
-              "serverTarget": "globex-partner:server:development"
+              "browserTarget": "globex-partner-web:build:development",
+              "serverTarget": "globex-partner-web:server:development"
             }
           },
           "defaultConfiguration": "production"

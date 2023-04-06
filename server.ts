@@ -13,13 +13,13 @@ import * as qs from 'qs';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/globex-partner/browser');
+  const distFolder = join(process.cwd(), 'dist/globex-partner-web/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
   const axios = require('axios');
 
 
   const ANGULR_API_GETPAGINATEDPRODUCTS = '/api/getPaginatedProducts';
-  const API_GET_PAGINATED_PRODUCTS = get('API_GET_PAGINATED_PRODUCTS').default('http://3ea8ea3c-2bc9-45ae-9dc9-73aad7d8eafb.mock.pstmn.io/services/products').asString();
+  const GLOBEX_PARTNER_GATEWAY = get('GLOBEX_PARTNER_GATEWAY').asString();
 
 
   const session = require('express-session');
@@ -67,11 +67,9 @@ export function app(): express.Express {
 
 
   server.get(ANGULR_API_GETPAGINATEDPRODUCTS, async (req, res) => {
-
-
     var getProducts: PaginatedProductsList;
     var myTimestamp = new Date().getTime().toString();
-    var url = API_GET_PAGINATED_PRODUCTS.toString();
+    var url = GLOBEX_PARTNER_GATEWAY + "/partners/services/product";
     var limit = req.query['limit'];
     var page = req.query['page'];
 

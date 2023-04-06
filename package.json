@@ -1,5 +1,5 @@
 {
-  "name": "globex-partner",
+  "name": "globex-partner-web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,10 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run globex-partner:serve-ssr",
-    "serve:ssr": "node dist/globex-partner/server/main.js",
-    "build:ssr": "ng build && ng run globex-partner:server",
-    "prerender": "ng run globex-partner:prerender"
+    "dev:ssr": "ng run globex-partner-web:serve-ssr",
+    "serve:ssr": "node dist/globex-partner-web/server/main.js",
+    "build:ssr": "ng build && ng run globex-partner-web:server",
+    "prerender": "ng run globex-partner-web:prerender"
   },
   "private": true,
   "dependencies": {
