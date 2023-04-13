@@ -16,3 +16,6 @@ NODE_ENV=prod
 PORT=8080
 
 
+# docker
+docker built -t quay.io/cloud-architecture-workshop/globex-partner-web:<checkin-tag> .
+docker push quay.io/cloud-architecture-workshop/globex-partner-web:<checkin-tag>
