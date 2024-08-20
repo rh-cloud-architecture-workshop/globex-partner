@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
   <div class="card">
     <div class="card-header" style="padding-bottom: 40px;padding-top: 40px;">
       <div class="col">
@@ -7,7 +7,15 @@
           class="btn btn-warning">Logout</button></span>
         </div>
     </div>
-    <div class="card-body">
+
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage && errorMessage!=null">
+      We are sorry, but an error has occurred. <br>
+      <strong>Error Status Code:</strong> {{ errorMessage.status }} <br>
+      <strong>Error Status Text:</strong> {{ errorMessage.statusText }}
+    </div>
+
+
+    <div class="card-body" *ngIf="!(errorMessage && errorMessage!=null)">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <div class="collapse navbar-collapse" id="navbarColor01">

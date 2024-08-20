@@ -5,6 +5,7 @@ import { PaginatedProductsList } from '../models/product.model';
 import serverEnvConfig from "client.env.config";
 import { Router } from '@angular/router';
 import { ProductsService } from '../services/products.service';
+import { MessageService } from '../message.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,6 +14,9 @@ import { ProductsService } from '../services/products.service';
 export class ProductsComponent implements OnInit {
   isUserAuthenticated:boolean=false;
   searchedProduct: any;
+  errorMessage:any;
+
+  private messageService:MessageService;
 
   testBrowser: boolean = true;
   products = new PaginatedProductsList();
@@ -22,10 +26,12 @@ export class ProductsComponent implements OnInit {
 
 
   constructor(private router: Router,
+    @Inject(MessageService) messageService:MessageService,
     @Inject(PLATFORM_ID) platformId:string, private productsService:ProductsService ) {
     this.isUserAuthenticated = false;
     this.testBrowser = isPlatformBrowser(platformId);
 
+    this.messageService = messageService;
   }
   ngOnInit(): void {
 
@@ -69,7 +75,11 @@ export class ProductsComponent implements OnInit {
   fetchPaginatedProductsList(page:string) {
 
     this.productsService.fetchPaginatedProductsList(page)
-      .subscribe(products => (this.products = products));
+      .subscribe(products => {
+        this.products = products;
+        this.errorMessage = JSON.parse(this.messageService.get());
+
+      });
 
 
   }

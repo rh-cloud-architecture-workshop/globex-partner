@@ -26,6 +26,6 @@ PORT -> always "8080" on openshift
 
 ## docker
 
-docker build -t quay.io/cloud-architecture-workshop/globex-partner-web:<checkin-tag> .
+podman build -t quay.io/cloud-architecture-workshop/globex-partner-web:errorcodes .
 
-docker push quay.io/cloud-architecture-workshop/globex-partner-web:<checkin-tag>
+podman push quay.io/cloud-architecture-workshop/globex-partner-web:errorcodes

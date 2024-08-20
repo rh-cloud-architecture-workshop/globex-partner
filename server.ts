@@ -84,7 +84,8 @@ export function app(): express.Express {
         res.send(getProducts);
       })
       .catch(error => {
-        console.log("ANGULR_API_GETPAGINATEDPRODUCTS", error);
+        console.log("ANGULR_API_GETCATEGORIES", error.response);
+        res.status(error.response.status).send();
       });
   });
 
